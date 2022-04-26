@@ -125,7 +125,6 @@
         app:layout_constraintLeft_toRightOf="@id/edit_article_tv_url"
         app:layout_constraintTop_toTopOf="@id/edit_article_tv_url" />
 
-
     <Button
         android:id="@+id/edit_article_btn_svg"
         android:layout_width="0dp"

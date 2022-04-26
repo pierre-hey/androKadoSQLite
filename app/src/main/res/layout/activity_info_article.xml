@@ -99,6 +99,25 @@
         />
 
 
+    <Button
+
+        android:id="@+id/edit_article_btn_delete"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:text="Supprimer article"
+        android:textSize="10sp"
+
+        android:onClick="deleteArticle"
+
+        android:layout_marginTop="15dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_designation"
+        />
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

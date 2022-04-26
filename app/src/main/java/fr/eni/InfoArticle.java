@@ -146,4 +146,9 @@ public class InfoArticle extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void deleteArticle(View view) {
+        articleDAO.delete(article);
+        finish();
+        Toast.makeText(this, "Article : " + article.getNom() + " supprimé avec succés.", Toast.LENGTH_SHORT).show();
+    }
 }
