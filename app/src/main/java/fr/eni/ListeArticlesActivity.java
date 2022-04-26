@@ -76,7 +76,6 @@ public class ListeArticlesActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         switch (item.getItemId()){
             case R.id.action_add:{
                 // OU démarre 1 activité formulaire activity (qui fait formulaire pour edition et création)

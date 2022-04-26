@@ -136,7 +136,9 @@ public class InfoArticle extends AppCompatActivity {
                 break;
             }
             case R.id.action_send: {
-                Toast.makeText(this, "Clic send", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, ListeContacts.class);
+                intent.putExtra("article",article);
+                startActivity(intent);
                 break;
             }
             default: {
