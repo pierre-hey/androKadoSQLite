@@ -15,9 +15,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import fr.eni.ListeContacts;
 import fr.eni.R;
 import fr.eni.bo.Article;
 import fr.eni.bo.Contact;
+
 import androidx.recyclerview.widget.RecyclerView;
 
 public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHolder> {
@@ -50,7 +52,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
         return listeContacts.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView tv_nom_contact;
         public TextView tv_numTel_contact;
 
@@ -64,13 +66,9 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
         @Override
         public void onClick(View view) {
             int position = getAdapterPosition();
-           // Contact contact = listeContacts.get(position);
-            // Sur ce onClick on pourra selectionner le contact pour envoyer le message
-            /*Intent intent = new Intent(activity, )*/
-           // Toast.makeText(activity, "Envoyer un message a : "+ contact.getNom(), Toast.LENGTH_SHORT).show();
-
-          /*  Intent intent = new Intent(activity,null);
-            intent.putExtra("contact",contact);*/
+            Contact contact = listeContacts.get(position);
+//            Toast.makeText(activity, "Envoyer un message a : " + contact.getNom(), Toast.LENGTH_SHORT).show();
+            ListeContacts.sendMessage(activity, contact);
 
         }
     }

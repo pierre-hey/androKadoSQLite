@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -15,6 +16,7 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.telephony.SmsManager;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,22 +27,25 @@ import fr.eni.bo.Contact;
 
 public class ListeContacts extends AppCompatActivity {
 
-    RecyclerView rv_contacts;
+    private static Article article;
 
-    Intent intentContact;
-    Intent intentArticle;
-    Article article;
+    RecyclerView rv_contacts;
+    Intent intent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liste_contacts);
+
+        intent = getIntent();
+        article = intent.getParcelableExtra("article");
 
         /*
             pour demander la permission à la création de la vue, si accepte une fois
             => ne redemande pas, si refus plusieurs fois, peut ne plus demander
          */
         ActivityCompat.requestPermissions(this,
-                new String[]{Manifest.permission.READ_CONTACTS},
+                new String[]{Manifest.permission.READ_CONTACTS, Manifest.permission.SEND_SMS},
                 123);
 
         // Création du RecyclerView
@@ -73,45 +78,44 @@ public class ListeContacts extends AppCompatActivity {
         List<Contact> contacts = new ArrayList<>();
         ContentResolver cr = getContentResolver();
 
+        // Cursor pour contact
         Cursor cursorContact = cr.query(
                 ContactsContract.Contacts.CONTENT_URI,
                 null, null, null, null);
 
-        while(cursorContact.moveToNext()){
+        // tant qu'il y a des contacts : récupère le l'id et le nom
+        while (cursorContact.moveToNext()) {
             String numTel = "";
             String id = cursorContact.getString(cursorContact.getColumnIndexOrThrow(ContactsContract.Contacts._ID));
             String nom = cursorContact.getString(cursorContact.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME));
 
+            // Cursor pour num tel : on récupére le num en fonction de l'id du contact, si le contact n'a pas de numéro => num tel = ""
             Cursor cursorPhones = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
-                    null,ContactsContract.CommonDataKinds.Phone.CONTACT_ID +" = "+ id,null, null);
-            
+                    null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + id, null, null);
+
             while (cursorPhones.moveToNext()) {
                 numTel = cursorPhones.getString(cursorPhones.getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Phone.NUMBER));
             }
-            
-            Contact contact = new Contact(Integer.parseInt(id),nom,numTel);
+            cursorPhones.close();
+            // création du contact et ajout dans la liste
+            Contact contact = new Contact(Integer.parseInt(id), nom, numTel);
             contacts.add(contact);
         }
-        ContactAdapter contactAdapter = new ContactAdapter(contacts,this);
+        ContactAdapter contactAdapter = new ContactAdapter(contacts, this);
+        cursorContact.close();
         rv_contacts.setAdapter(contactAdapter);
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        //intentContact = getIntent();
-        //Contact contact = intentContact.getParcelableExtra("contact");
-        //Log.i("toto","ListeContact - onResume - " + contact.toString());
-        //intentArticle = getIntent();
-        //Article article = intentArticle.getParcelableExtra("article");
 
-/*
-        SmsManager manager=SmsManager.getDefault();
+    public static void sendMessage(Context context, Contact contact) {
+        SmsManager manager = SmsManager.getDefault();
         manager.sendTextMessage(contact.getNumTel(),
                 null,
-                "Bonjour j'aimerais bien avoir ceci : " + article.getNom() ,
-                null,null);
-    }
-*/
+                "Bonjour " + contact.getNom() + ", j'aimerais bien avoir ceci : " + article.getNom(),
+                null, null);
 
-}}
+        Toast.makeText(context, "Message envoyé à : " + contact.getNom() +
+                "pour l'article : " + article.getNom(), Toast.LENGTH_SHORT).show();
+
+    }
+}
