@@ -2,7 +2,6 @@ package fr.eni.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,8 +53,8 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
 
         public ViewHolder(View itemView) {
             super(itemView);
-            tv_nom_article = itemView.findViewById(R.id.tv_ligne_article_nom);
-            rb_note_article = itemView.findViewById(R.id.rb_article);
+            tv_nom_article = itemView.findViewById(R.id.cv_tv_nomArticle);
+            rb_note_article = itemView.findViewById(R.id.cv_rb_article);
             // this désigne le view holder capable de gérer un clic puisqu'il implement OnClickListener
              itemView.setOnClickListener(this);
         }

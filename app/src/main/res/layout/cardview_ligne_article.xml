@@ -18,7 +18,7 @@
         android:background="#F1EEE7">
 
         <TextView
-            android:id="@+id/tv_ligne_article_nom"
+            android:id="@+id/cv_tv_nomArticle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -28,7 +28,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <RatingBar
-            android:id="@+id/rb_article"
+            android:id="@+id/cv_rb_article"
             style="@style/Widget.AppCompat.RatingBar.Small"
 
             android:layout_width="wrap_content"
@@ -40,14 +40,14 @@
             app:layout_constraintBottom_toBottomOf="parent"
 
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_ligne_article_nom" />
+            app:layout_constraintTop_toBottomOf="@id/cv_tv_nomArticle" />
 
         <ImageView
-            android:id="@+id/img_article"
+            android:id="@+id/cv_img_article"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            app:layout_constraintLeft_toRightOf="@id/tv_ligne_article_nom"
+            app:layout_constraintLeft_toRightOf="@id/cv_tv_nomArticle"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@android:drawable/ic_menu_gallery"
 

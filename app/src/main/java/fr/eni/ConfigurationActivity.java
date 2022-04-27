@@ -6,12 +6,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 public class ConfigurationActivity extends AppCompatActivity {
     private TextView etPrixParDefaut;
@@ -22,8 +19,8 @@ public class ConfigurationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuration);
 
-        etPrixParDefaut = findViewById(R.id.et_prix_defaut);
-        swTriActif = findViewById(R.id.switch_tri_par_prix);
+        etPrixParDefaut = findViewById(R.id.config_et_prix_defaut);
+        swTriActif = findViewById(R.id.config_switch_tri_par_prix);
 
         SharedPreferences sp = getSharedPreferences("pref", MODE_PRIVATE);
         boolean triActif = sp.getBoolean("config_tri", false);

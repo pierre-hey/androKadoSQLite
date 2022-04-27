@@ -115,7 +115,7 @@ public class ListeContacts extends AppCompatActivity {
                 null, null);
 
         Toast.makeText(context, "Message envoyé à : " + contact.getNom() +
-                "pour l'article : " + article.getNom(), Toast.LENGTH_SHORT).show();
+                " pour l'article : " + article.getNom(), Toast.LENGTH_SHORT).show();
 
     }
 }

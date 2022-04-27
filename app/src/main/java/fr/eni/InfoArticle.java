@@ -46,11 +46,11 @@ public class InfoArticle extends AppCompatActivity {
         // Toast.makeText(this, article.getUrl(), Toast.LENGTH_SHORT).show();
 
         // Recup champs de l'affichage
-        tvNomArticle = findViewById(R.id.textView_nomArticle);
-        tvPrixArticle = findViewById(R.id.textView_prix);
-        tvDesignationArticle = findViewById(R.id.textView_designation);
-        tvNoteArticle = findViewById(R.id.ratingBar);
-        ToggleButton tbAchete = findViewById(R.id.tb_achete);
+        tvNomArticle = findViewById(R.id.infoArticle_tv_nomArticle);
+        tvPrixArticle = findViewById(R.id.infoArticle_tv_prix);
+        tvDesignationArticle = findViewById(R.id.infoArticle_tv_designation);
+        tvNoteArticle = findViewById(R.id.infoArticle_ratingBar);
+        ToggleButton tbAchete = findViewById(R.id.infoArticle_tb_achete);
 
         tbAchete.setChecked(article.getAchete());
 
