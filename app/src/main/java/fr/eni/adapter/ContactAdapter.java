@@ -1,14 +1,11 @@
 package fr.eni.adapter;
 
 import android.content.Context;
-import android.content.Intent;
-import android.telephony.SmsManager;
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -67,7 +64,6 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
         public void onClick(View view) {
             int position = getAdapterPosition();
             Contact contact = listeContacts.get(position);
-//            Toast.makeText(activity, "Envoyer un message a : " + contact.getNom(), Toast.LENGTH_SHORT).show();
             ListeContacts.sendMessage(activity, contact);
 
         }

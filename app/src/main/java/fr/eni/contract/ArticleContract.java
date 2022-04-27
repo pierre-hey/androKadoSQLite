@@ -11,7 +11,7 @@ public class ArticleContract {
     public static final String COL_DESIGNATION = "designation";
     public static final String COL_NOTE = "note";
     public static final String COL_URL = "url";
-    public static final String COL_IS_ACHETE="is_achete";
+    public static final String COL_IS_ACHETE = "is_achete";
 
 
     // Requete pour création de la table
@@ -24,7 +24,7 @@ public class ArticleContract {
                     + COL_NOTE + " INTEGER,"
                     + COL_URL + " TEXT,"
                     + COL_IS_ACHETE + " NUMERIC"
-            +");";
+                    + ");";
 
     // requete pour suppression de la table
     public static final String DROP_TABLE = "DROP TABLE " + TABLE_NAME;

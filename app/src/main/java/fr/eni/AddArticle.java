@@ -2,7 +2,6 @@ package fr.eni;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -53,7 +52,7 @@ public class AddArticle extends AppCompatActivity {
         article.setUrl(etURLArticle.getText().toString());
         article.setAchete(false);
 
-        Log.i("toto", "AddArticle - ajouterArticle - " + article.toString());
+        Log.i("toto", "AddArticle - ajouterArticle - " + article);
 
         articleDAO.insert(article);
 

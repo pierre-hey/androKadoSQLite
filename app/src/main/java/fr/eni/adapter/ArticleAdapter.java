@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -25,13 +26,12 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
         this.activity = activity;
     }
 
-
+    @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //Log.i("toto","Création view holder");
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_ligne_article, parent, false);
-        ViewHolder vh = new ViewHolder(v);
-        return vh;
+        return new ViewHolder(v);
     }
 
     @Override
@@ -56,7 +56,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
             tv_nom_article = itemView.findViewById(R.id.cv_tv_nomArticle);
             rb_note_article = itemView.findViewById(R.id.cv_rb_article);
             // this désigne le view holder capable de gérer un clic puisqu'il implement OnClickListener
-             itemView.setOnClickListener(this);
+            itemView.setOnClickListener(this);
         }
 
         @Override

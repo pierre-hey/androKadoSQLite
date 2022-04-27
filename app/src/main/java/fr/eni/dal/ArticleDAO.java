@@ -1,13 +1,9 @@
 package fr.eni.dal;
 
-import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
-
-import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +20,7 @@ public class ArticleDAO {
         BddHelper helper = new BddHelper(context);
         db = helper.getWritableDatabase(); // Permet lecture/écriture/suppression
     }
+
     public void insert(Article article) {
         // Equivalent à un HashMap avec un systeme de clé/valeur, on nourrit chaque champ avec les valeurs reçues
         ContentValues cv = new ContentValues();

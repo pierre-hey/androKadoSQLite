@@ -15,7 +15,6 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.telephony.SmsManager;
-import android.util.Log;
 import android.widget.Toast;
 
 import java.util.ArrayList;

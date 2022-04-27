@@ -137,7 +137,7 @@ public class InfoArticle extends AppCompatActivity {
             }
             case R.id.action_send: {
                 Intent intent = new Intent(this, ListeContacts.class);
-                intent.putExtra("article",article);
+                intent.putExtra("article", article);
                 startActivity(intent);
                 break;
             }

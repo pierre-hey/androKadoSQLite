@@ -24,10 +24,8 @@ public class ConfigurationActivity extends AppCompatActivity {
 
         SharedPreferences sp = getSharedPreferences("pref", MODE_PRIVATE);
         boolean triActif = sp.getBoolean("config_tri", false);
-        String prixDefaut = sp.getString("prix_defaut",null);
+        String prixDefaut = sp.getString("prix_defaut", null);
 
-        //Log.i("toto", "ConfigurationActivity - onCreate - triActif : " + triActif);
-        //Log.i("toto", "ConfigurationActivity - onCreate - prixDefaut : " + prixDefaut);
         swTriActif.setChecked(triActif);
         etPrixParDefaut.setText(prixDefaut);
 
